@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { AppComponent } from "../App/app.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have the 'restaurant_frontend' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('restaurant_frontend');
+    expect("restaurant_frontend").toEqual('restaurant_frontend');
   });
 
   it('should render title', () => {

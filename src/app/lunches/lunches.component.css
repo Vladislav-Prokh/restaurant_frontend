@@ -1,0 +1,51 @@
+#lunches-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .lunches-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .lunch-item {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+  .meal-info {
+    margin-bottom: 20px;
+  }
+  
+  .meal-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .meal-info p {
+    margin-bottom: 5px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .lunches-container {
+      justify-content: flex-start;
+    }
+  
+    .lunch-item {
+      width: 100%;
+    }
+  }

@@ -1,0 +1,19 @@
+<div id = "lunches-content">
+    <div class="lunches-container">
+        <div *ngFor="let lunch of lunches" class="lunch-item">
+          <div class="meal-info">
+            <h3>Main Course</h3>
+            <p>Name: {{ lunch.mainCourse.mealName }}</p>
+            <p>Price: {{ lunch.mainCourse.mealPrice }}<small>$</small></p>
+            <p>Cuisine: {{ lunch.mainCourse.cuisine }}</p>
+          </div>
+          <div class="meal-info">
+            <h3>Dessert</h3>
+            <p>Name: {{ lunch.dessert.dessertName }}</p>
+            <p>Price: {{ lunch.dessert.dessertPrice }}<small>$</small></p>
+            <p>Cuisine: {{ lunch.dessert.cuisine }}</p>
+          </div>
+        </div>
+      </div>
+</div>
+
