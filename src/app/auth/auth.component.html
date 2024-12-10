@@ -1,4 +1,4 @@
 <div class="auth-panel">
-    <button class="login-button" (click)="signInWithGoogle()" >Login</button>
-    <button  class="logout-button" >Logout</button>
-  </div>
+  <button *ngIf="!(isAuthenticated | async)" class="login-button" (click)="signInWithGoogle()">Login</button>
+  <button *ngIf="isAuthenticated | async" class="logout-button" (click)="logout()">Logout</button>
+</div>

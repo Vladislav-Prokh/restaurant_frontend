@@ -1,46 +1,52 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { authConfig } from './auth.config';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAuthService {
+  private loginUrl = 'http://localhost:8080/oauth2/authorization/google';
+  private userInfoUrl = 'http://localhost:8080/api/auth/userinfo';
 
-  private oAuthService = inject(OAuthService);
-  private router = inject(Router);
-  profile = signal<any>(null);
+  private isAuthenticated = new BehaviorSubject<boolean>(false);
+  private userRole = new BehaviorSubject<string>("");
+
+  isAuthenticated$ = this.isAuthenticated.asObservable();
+  userRole$ = this.userRole.asObservable();
 
 
-  constructor() {
-    this.initConfiguration();
+  constructor(private http: HttpClient, private router: Router) {}
+
+  login() {
+    window.location.href = this.loginUrl; 
   }
 
-  initConfiguration() {
-    this.oAuthService.configure(authConfig);
-    this.oAuthService.setupAutomaticSilentRefresh();
-    this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      if (this.oAuthService.hasValidIdToken()) {
-        this.profile.set(this.oAuthService.getIdentityClaims());
+  checkAuth() {
+    this.http.get(this.userInfoUrl, { withCredentials: true }).subscribe({
+      next: (user: any) => {
+        this.isAuthenticated.next(true);
+        this.userRole.next(user.role || "");
+      },
+      error: () => {
+        this.isAuthenticated.next(false);
+        this.userRole.next("");
       }
     });
   }
-
-  login() {
-    this.oAuthService.initImplicitFlow();
+  
+  getUserInfo() {
+    return this.http.get(this.userInfoUrl);
   }
-
+  getUserRole(){
+    return this.userRole$;
+  }
   logout() {
-    this.oAuthService.revokeTokenAndLogout();
-    this.oAuthService.logOut();
-    this.profile.set(null);
+    localStorage.removeItem('access_token');
+    this.isAuthenticated.next(false);
+    this.userRole.next("");
   }
-
-  getProfile() {
-    return this.profile();
-  }
-
 }
 
 

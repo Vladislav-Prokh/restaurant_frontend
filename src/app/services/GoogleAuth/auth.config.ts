@@ -7,3 +7,4 @@ export const authConfig: AuthConfig = {
   redirectUri: "http://localhost:8080"+'/login/oauth2/code/google',
   scope: 'openid profile email',
 };
+
