@@ -40,7 +40,6 @@ export class LunchFromComponent{
       this.lunchService.addLunch(lunchData).subscribe(
         response => {
           console.log('Ланч успешно добавлен:', response);
-          // Действия после успешного добавления (например, очистка формы)
         },
         error => {
           console.error('Ошибка при добавлении ланча:', error);

@@ -46,6 +46,31 @@ export class GoogleAuthService {
     localStorage.removeItem('access_token');
     this.isAuthenticated.next(false);
     this.userRole.next("");
+
+    document.cookie.split(";").forEach(cookie => {
+      const eqPos = cookie.indexOf("=");
+      const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+  
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() - 1); 
+  
+      document.cookie = name + `=;expires=${expirationDate.toUTCString()};path=/`;
+  });
+
+      fetch('http://localhost:8080/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include', 
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Successfully logged out");
+        } else {
+            console.error("Logout failed", response.status);
+        }
+    })
+    .catch(error => {
+        console.error("Error during logout request", error);
+    });
   }
 }
 
