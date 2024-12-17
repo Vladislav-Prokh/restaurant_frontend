@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LunchFromComponent } from './lunch-from.component';
+import { EmployeePanelComponent } from './employee-panel.component';
 
-describe('LunchFromComponent', () => {
-  let component: LunchFromComponent;
-  let fixture: ComponentFixture<LunchFromComponent>;
+describe('EmployeePanelComponent', () => {
+  let component: EmployeePanelComponent;
+  let fixture: ComponentFixture<EmployeePanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LunchFromComponent]
+      imports: [EmployeePanelComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LunchFromComponent);
+    fixture = TestBed.createComponent(EmployeePanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

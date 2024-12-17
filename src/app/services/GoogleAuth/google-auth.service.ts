@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { UserRoleService } from '../UserRoleService/user-role.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,70 +10,71 @@ export class GoogleAuthService {
   private loginUrl = 'http://localhost:8080/oauth2/authorization/google';
   private userInfoUrl = 'http://localhost:8080/api/auth/userinfo';
 
-  private isAuthenticated = new BehaviorSubject<boolean>(false);
-  private userRole = new BehaviorSubject<string>("");
+  private isAuthenticated = new BehaviorSubject<boolean>(localStorage.getItem('isAuthenticated') === 'true');
+  private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole') || "");
 
   isAuthenticated$ = this.isAuthenticated.asObservable();
   userRole$ = this.userRole.asObservable();
-
-
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private userRoleService: UserRoleService) {}
 
   login() {
-    window.location.href = this.loginUrl; 
+    window.location.href = this.loginUrl;
   }
-
   checkAuth() {
     this.http.get(this.userInfoUrl, { withCredentials: true }).subscribe({
       next: (user: any) => {
         this.isAuthenticated.next(true);
         this.userRole.next(user.role || "");
+
+        localStorage.setItem('isAuthenticated', 'true'); 
+        this.userRoleService.setUserRole(user.role || "");
+        localStorage.setItem('user_id', user.id); 
       },
       error: () => {
         this.isAuthenticated.next(false);
         this.userRole.next("");
+        localStorage.setItem('isAuthenticated', 'false'); 
+        this.userRoleService.clearUserRole();
+        localStorage.removeItem("user_id");
       }
     });
   }
-  
+
   getUserInfo() {
     return this.http.get(this.userInfoUrl);
   }
-  getUserRole(){
+
+  getUserRole() {
     return this.userRole$;
   }
+
   logout() {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('isAuthenticated'); 
+    this.userRoleService.clearUserRole();
+    localStorage.removeItem("user_id");
     this.isAuthenticated.next(false);
     this.userRole.next("");
 
     document.cookie.split(";").forEach(cookie => {
       const eqPos = cookie.indexOf("=");
       const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
-  
       const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getDate() - 1); 
-  
-      document.cookie = name + `=;expires=${expirationDate.toUTCString()};path=/`;
-  });
+      expirationDate.setDate(expirationDate.getDate() - 1);
 
-      fetch('http://localhost:8080/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include', 
+      document.cookie = name + `=;expires=${expirationDate.toUTCString()};path=/`;
+    });
+
+    fetch('http://localhost:8080/api/auth/logout', {
+      method: 'POST',
+      credentials: 'include',
     })
     .then(response => {
-        if (response.ok) {
-            console.log("Successfully logged out");
-        } else {
-            console.error("Logout failed", response.status);
-        }
+      if (!response.ok) {
+        console.error("Logout failed", response.status);
+      } 
     })
     .catch(error => {
-        console.error("Error during logout request", error);
+      console.error("Error during logout request", error);
     });
   }
 }
-
-
-
-

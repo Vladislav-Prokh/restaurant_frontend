@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/MenuService/menu-service';
 import { CommonModule } from '@angular/common'; 
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-beverages',
     imports: [CommonModule],
@@ -10,9 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 
 export class BeveragesComponent implements OnInit {
+
   beverages: any[] = [];
 
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService, private router: Router) {}
   
   ngOnInit(): void {
     this.menuService.getBeverages().subscribe({
@@ -24,4 +25,13 @@ export class BeveragesComponent implements OnInit {
       }
     });
   }
+
+  removeBeverage(beverage: any) {
+    this.menuService.deleteBeverage(beverage);
+  }
+
+    isAdmin(): any {
+   return this.router.url.includes('/admin');
+    }
+
 }

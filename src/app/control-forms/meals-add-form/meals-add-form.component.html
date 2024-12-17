@@ -1,0 +1,30 @@
+<div class="form-container">
+  <h2>Add Dish</h2>
+  <form [formGroup]="mealForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label for="mealName">Dish Name</label>
+      <input id="mealName" formControlName="mealName" type="text" required />
+      <div *ngIf="mealForm.get('mealName')?.invalid && mealForm.get('mealName')?.touched" class="error">
+        Please enter the dish name.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mealPrice">Price</label>
+      <input id="mealPrice" formControlName="mealPrice" type="number" required />
+      <div *ngIf="mealForm.get('mealPrice')?.invalid && mealForm.get('mealPrice')?.touched" class="error">
+        Please specify the dish price.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cuisine">Cuisine</label>
+      <input id="cuisine" formControlName="cuisine" type="text" required />
+      <div *ngIf="mealForm.get('cuisine')?.invalid && mealForm.get('cuisine')?.touched" class="error">
+        Please specify the cuisine.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="mealForm.invalid">Add Dish</button>
+  </form>
+</div>

@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { GoogleAuthService } from '../services/GoogleAuth/google-auth.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
+
   constructor(private authService: GoogleAuthService, private router: Router) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-    const requiredRoles: string[] = route.data['roles'] || [];
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+      const roles = next.data['roles'] || [];
+      const userRole = localStorage.getItem('userRole');
 
-    return this.authService.getUserRole().pipe(
-      map((userRole: string) => {
-        if (requiredRoles.includes(userRole)) {
-          return true; 
-        }
-        this.router.navigate(['/unauthorized']); 
+      if (!userRole) {
+        this.router.navigate(['/login']);
         return false;
-      }),
-      catchError(() => {
-        this.router.navigate(['/unauthorized']); 
-        return of(false); 
-      })
-    );
+      }
+
+      if (roles.includes(userRole)) {
+        console.log('Access granted');
+        return true;
+      } else {
+        this.router.navigate(['/unauthorized']);
+        return false;
+      }
   }
 }

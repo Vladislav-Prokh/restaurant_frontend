@@ -1,0 +1,19 @@
+<div class="employee-list-container">
+    <h2>Список работников</h2>
+  
+    <div *ngFor="let employee of employees" class="employee-item">
+      <div class="employee-info">
+        <span>{{ employee.employeeName }} - {{ employee.employeeSurName }} - Current: {{ employee.role }}</span>
+      </div>
+  
+      <div class="employee-actions">
+        <button (click)="deleteEmployee(employee.employeeId)" class="delete-button">Удалить</button>
+  
+        <select [(ngModel)]="employee.selectedRole" (change)="assignRole(employee)">
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  

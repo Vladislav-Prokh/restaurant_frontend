@@ -1,9 +1,18 @@
-<div id = "beverages-content">
-    <div class="menu-container">
-        <div *ngFor="let item of beverages" class="menu-item">
-          <h3>Name:{{ item.beverageName }}</h3>
-          <p>Price: {{ item.beveragePrice}}</p>
-        </div>
+<div id="beverages-content">
+
+  <div *ngIf="isAdmin()" class="add-button-container">
+    <a href="/admin/beverage-form" class="add-btn">Add</a>
+  </div>
+
+  <div class="menu-container">
+    <div *ngFor="let item of beverages" class="menu-item">
+      <h3>Name: {{ item.beverageName }}</h3>
+      <p>Price: {{ item.beveragePrice }}<small>$</small></p>
+
+      <div *ngIf="isAdmin()">
+        <button (click)="removeBeverage(item)" class="remove-btn">Remove</button>
       </div>
-      
+    </div>
+  </div>
+
 </div>
