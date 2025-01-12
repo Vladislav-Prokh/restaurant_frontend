@@ -2,20 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { UserRoleService } from '../UserRoleService/user-role.service';
-
+import { environment } from '../../environment';
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAuthService {
-  private loginUrl = 'http://localhost:8080/oauth2/authorization/google';
-  private userInfoUrl = 'http://localhost:8080/api/auth/userinfo';
+  private loginUrl = '';
+  private userInfoUrl = '';
 
   private isAuthenticated = new BehaviorSubject<boolean>(localStorage.getItem('isAuthenticated') === 'true');
   private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole') || "");
-
   isAuthenticated$ = this.isAuthenticated.asObservable();
   userRole$ = this.userRole.asObservable();
-  constructor(private http: HttpClient, private userRoleService: UserRoleService) {}
+
+  constructor(private http: HttpClient, private userRoleService: UserRoleService) {
+      this.loginUrl = environment.apiUrl + "/oauth2/authorization/google";
+      this.userInfoUrl = environment.apiUrl + "/api/auth/userinfo";
+  }
 
   login() {
     window.location.href = this.loginUrl;

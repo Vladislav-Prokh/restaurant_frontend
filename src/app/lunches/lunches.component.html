@@ -1,20 +1,21 @@
 <div id="lunches-content">
-
   <div *ngIf="isAdmin()" class="add-button-container">
-    <a href="/admin/lunch-from"class="add-btn">Add</a>
+    <a href="/admin/lunch-form" class="add-btn">Add Lunch</a>
   </div>
 
   <div class="lunches-container">
     <div *ngFor="let lunch of lunches" class="lunch-item">
-      <div class="meal-info">
+      <div class="lunch-info">
         <h3>Main Course</h3>
         <p>Name: {{ lunch.mainCourse.mealName }}</p>
       </div>
-      <div class="meal-info">
+      <div class="lunch-info">
         <h3>Dessert</h3>
         <p>Name: {{ lunch.dessert.dessertName }}</p>
       </div>
-      <p>Total price: {{ lunch.mainCourse.mealPrice + lunch.dessert.dessertPrice}}<small>$</small></p>
+      <p class="total-price">
+        Total Price: {{ lunch.mainCourse.mealPrice + lunch.dessert.dessertPrice }}<small>$</small>
+      </p>
 
       <div *ngIf="isAdmin()">
         <button (click)="removeLunch(lunch)" class="remove-btn">Remove</button>
@@ -22,4 +23,10 @@
     </div>
   </div>
 
+
+</div>
+<div class="pagination-controls">
+  <button (click)="goToPreviousPage()" [disabled]="currentPage === 0">Previous</button>
+  <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+  <button (click)="goToNextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
 </div>

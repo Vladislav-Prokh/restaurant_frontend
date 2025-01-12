@@ -12,17 +12,25 @@ import { Router } from '@angular/router';
 export class LunchesComponent implements OnInit {
 
   lunches: any[] = [];
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalPages: number = 0;
 
   constructor(private menuService: MenuService, private router: Router) {}
 
   ngOnInit(): void {
-    this.menuService.getLunches().subscribe({
+    this.loadLunches();
+  }
+
+  loadLunches(): void {
+    this.menuService.getLunches(this.currentPage, this.pageSize).subscribe({
       next: (data) => {
         this.lunches = data.content || [];
+        this.totalPages = Math.ceil(data.page.totalElements / this.pageSize);
       },
       error: (err) => {
-        console.error('Error fetching menu items:', err);
-      }
+        console.error('Error fetching meals:', err);
+      },
     });
   }
 
@@ -32,5 +40,19 @@ export class LunchesComponent implements OnInit {
 
   removeLunch(lunch: any): void {
     this.menuService.deleteLunch(lunch);
+  }
+
+  goToNextPage(): void {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      this.loadLunches();
+    }
+  }
+
+  goToPreviousPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadLunches();
+    }
   }
 }

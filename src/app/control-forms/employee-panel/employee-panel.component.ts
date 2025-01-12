@@ -24,7 +24,7 @@ export class EmployeePanelComponent {
         this.employees = data.content;
       },
       error: (error) => {
-        console.error('Ошибка при загрузке сотрудников:', error);
+        console.error('There is a fail with loading employees:', error);
       }
     });
   }

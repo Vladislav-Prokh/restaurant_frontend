@@ -30,13 +30,13 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.meal-info {
+.dessert-info {
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid #f0f0f0;
 }
 
-.meal-info h3 {
+.dessert-info h3 {
     font-size: 20px;
     color: #2c3e50;
     margin-bottom: 8px;
@@ -44,7 +44,7 @@
     text-align: left;
 }
 
-.meal-info p {
+.dessert-info p {
     font-size: 14px;
     color: #7f8c8d;
     margin: 4px 0;
@@ -100,12 +100,47 @@
     background-color: darkred;
 }
 
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+.pagination-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination-controls button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not([disabled]) {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.pagination-controls span {
+    font-size: 16px;
+    color: #333;
+    margin: 0 15px;
+}
+
 @media (max-width: 768px) {
     .dessert-item {
         padding: 15px;
     }
 
-    .meal-info h3 {
+    .dessert-info h3 {
         font-size: 18px;
     }
 
@@ -119,7 +154,7 @@
         padding: 10px;
     }
 
-    .meal-info h3 {
+    .dessert-info h3 {
         font-size: 16px;
     }
 

@@ -1,23 +1,27 @@
 <div id="desserts-content">
+  <div *ngIf="isAdmin()" class="add-button-container">
+    <a href="/admin/dessert-form" class="add-btn">Add Dessert</a>
+  </div>
 
-    <div *ngIf="isAdmin()" class="add-button-container">
-      <a href="/admin/dessert-form" class="add-btn">Add Dessert</a>
-    </div>
-  
-    <div class="desserts-container">
-      <div *ngFor="let dessert of desserts" class="dessert-item">
-        <div class="meal-info">
-          <h3>Dessert</h3>
-          <p>Name: {{ dessert.dessertName }}</p>
-        </div>
+  <div class="desserts-container">
+    <div *ngFor="let dessert of desserts" class="dessert-item">
+      <div class="dessert-info">
+        <h3>Dessert</h3>
+        <p>Name: {{ dessert.dessertName }}</p>
+      </div>
 
-        <p>Price: {{ dessert.dessertPrice }} <small>$</small></p>
-  
-        <div *ngIf="isAdmin()">
-          <button (click)="removeDessert(dessert)" class="remove-btn">Remove</button>
-        </div>
+      <p>Price: {{ dessert.dessertPrice }} <small>$</small></p>
+
+      <div *ngIf="isAdmin()">
+        <button (click)="removeDessert(dessert)" class="remove-btn">Remove</button>
       </div>
     </div>
-  
   </div>
-  
+
+
+</div>
+<div class="pagination-controls">
+  <button (click)="goToPreviousPage()" [disabled]="currentPage === 0">Previous</button>
+  <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+  <button (click)="goToNextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+</div>

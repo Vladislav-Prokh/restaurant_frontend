@@ -17,27 +17,104 @@
     justify-content: center;
   }
   
-  .menu-item {
-    background-color: #ffffff;
+  .add-button-container {
+    text-align: right;
+    margin-bottom: 20px;
+    margin-right: 20%;
+  }
+  
+  .add-btn {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .beverages-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .beverage-item {
+    background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 250px;
-    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .menu-item h3 {
-    font-size: 1.5rem;
+  
+  .beverage-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .beverage-item h3 {
+    font-size: 18px;
+    margin: 0 0 10px;
     color: #333;
-    margin-bottom: 10px;
   }
-  .menu-item p {
-    font-size: 1.2rem;
-    color: #555;
+  
+  .beverage-item p {
+    font-size: 16px;
+    margin: 0;
+    color: #666;
   }
-  .menu-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  
+  .remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-btn:hover {
+    background-color: #b02a37;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    grid-column: 1 / -1;
+  }
+  
+  .pagination-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-controls button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .pagination-controls button:hover:not([disabled]) {
+    background-color: #0056b3;
+  }
+  
+  .pagination-controls span {
+    font-size: 16px;
+    color: #333;
   }
   

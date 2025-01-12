@@ -19,9 +19,12 @@
 
     <div class="form-group">
       <label for="cuisine">Cuisine</label>
-      <input id="cuisine" formControlName="cuisine" type="text" required />
+      <select id="cuisine" formControlName="cuisine" required>
+        <option value="" disabled selected>Select a cuisine</option>
+        <option *ngFor="let cuisine of cuisines" [value]="cuisine">{{ cuisine }}</option>
+      </select>
       <div *ngIf="mealForm.get('cuisine')?.invalid && mealForm.get('cuisine')?.touched" class="error">
-        Please specify the cuisine.
+        Please select a cuisine.
       </div>
     </div>
 

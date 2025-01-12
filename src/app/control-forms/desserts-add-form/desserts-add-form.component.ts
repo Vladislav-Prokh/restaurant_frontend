@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from '../../services/MenuService/menu-service';
 import { CommonModule } from '@angular/common'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { environment } from '../../environment';
 @Component({
   selector: 'app-desserts-add-form',
   imports: [CommonModule,ReactiveFormsModule],
@@ -12,12 +13,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class DessertsAddFormComponent {
   dessertForm: FormGroup; 
-  cuisines: string[] = ["Mexican", "Polish", "French"];
+  cuisines: string[] = [];
   constructor(
     private fb: FormBuilder, 
     private dessertService: MenuService
   ) {
 
+    this.cuisines = environment.cuisines;
+    
     this.dessertForm = this.fb.group({
       dessertName: ['', Validators.required],
       dessertPrice: [null, [Validators.required, Validators.min(0)]],

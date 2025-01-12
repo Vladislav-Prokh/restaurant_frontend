@@ -15,140 +15,117 @@
     gap: 20px;
   }
   
-  .lunch-item {
-    background: #ffffff;
-    border: 1px solid #e3e3e3;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left;
-  }
-  
-  .lunch-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .meal-info {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  
-  .meal-info h3 {
-    font-size: 20px;
-    color: #2c3e50;
-    margin-bottom: 8px;
-    font-weight: 600;
-    text-align: left;
-  }
-  
-  .meal-info p {
-    font-size: 14px;
-    color: #7f8c8d;
-    margin: 4px 0;
-    text-align: left;
-  }
-  
-  .lunch-item p {
-    font-size: 16px;
-    font-weight: 500;
-    color: #34495e;
-    margin-top: 10px;
-    text-align: left;
-  }
-  
-  .lunch-item small {
-    font-size: 12px;
-    color: #95a5a6;
-    margin-left: 2px;
-  }
-
-
-
-
   .add-button-container {
-    width: 40%; 
-    text-align: center;
+    text-align: right;
+    width: 100%;
     margin-bottom: 20px;
+    margin-right: 20%;
   }
   
   .add-btn {
-    padding: 12px 24px;
-    background-color: #4CAF50;
+    text-decoration: none;
+    background-color: #28a745;
     color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
+    padding: 10px 20px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .add-btn:hover {
-    background-color: #45a049; 
+    background-color: #218838;
+    transform: scale(1.05);
   }
   
   .lunches-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+    width: 100%;
+    max-width: 1200px;
   }
   
   .lunch-item {
-    padding: 15px;
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    width: 100%;
-    max-width: 800px; 
-    box-sizing: border-box; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
-  .meal-info h3 {
-    margin: 0;
+  .lunch-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .lunch-info h3 {
     font-size: 18px;
+    color: #444;
+    margin: 0 0 5px;
+    text-transform: uppercase;
   }
   
+  .lunch-info p {
+    font-size: 16px;
+    color: #555;
+    margin: 0 0 10px;
+  }
+  
+  .total-price {
+    font-size: 18px;
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
   .remove-btn {
-    background-color: red;
+    background-color: #dc3545;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 15px;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .remove-btn:hover {
-    background-color: darkred;
+    background-color: #b02a37;
+    transform: scale(1.05);
   }
   
-  @media (max-width: 768px) {
-    .lunch-item {
-      padding: 15px;
-    }
-  
-    .meal-info h3 {
-      font-size: 18px;
-    }
-  
-    .lunch-item p {
-      font-size: 15px;
-    }
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
   }
   
-  @media (max-width: 480px) {
-    .lunch-item {
-      padding: 10px;
-    }
+  .pagination-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
   
-    .meal-info h3 {
-      font-size: 16px;
-    }
+  .pagination-controls button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
   
-    .lunch-item p {
-      font-size: 14px;
-    }
+  .pagination-controls button:hover:not([disabled]) {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .pagination-controls span {
+    font-size: 16px;
+    color: #333;
+    margin: 0 15px;
   }

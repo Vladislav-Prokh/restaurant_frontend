@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from '../../services/MenuService/menu-service';  
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; 
-
+import { environment } from '../../environment';
 @Component({
   selector: 'app-meals-add-form',
   templateUrl: './meals-add-form.component.html',
@@ -15,12 +15,12 @@ import { CommonModule } from '@angular/common';
 
 export class MealsAddFormComponent implements OnInit {
   mealForm: FormGroup;
-
+  cuisines: string[] = [];
   constructor(
     private fb: FormBuilder,
     private menuService: MenuService
   ) {
-
+    this.cuisines = environment.cuisines;
     this.mealForm = this.fb.group({
       mealName: ['', Validators.required],  
       mealPrice: [null, [Validators.required, Validators.min(1)]], 

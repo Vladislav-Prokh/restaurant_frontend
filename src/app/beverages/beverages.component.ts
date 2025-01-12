@@ -12,26 +12,50 @@ import { Router } from '@angular/router';
 export class BeveragesComponent implements OnInit {
 
   beverages: any[] = [];
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalPages: number = 0;
 
   constructor(private menuService: MenuService, private router: Router) {}
   
   ngOnInit(): void {
-    this.menuService.getBeverages().subscribe({
-      next: (data) => {
-        this.beverages = data.content||[];
-      },
-      error: (err) => {
-        console.error('Error fetching menu items:', err);
-      }
-    });
+    this.loadBeverages();
   }
 
+  loadBeverages(): void {
+    this.menuService.getBeverages(this.currentPage, this.pageSize).subscribe({
+      next: (data) => {
+        this.beverages = data.content || [];
+        this.totalPages = Math.ceil(data.page.totalElements / this.pageSize);
+      },
+      error: (err) => {
+        console.error('Error fetching meals:', err);
+      },
+    });
+  }
   removeBeverage(beverage: any) {
-    this.menuService.deleteBeverage(beverage);
+    this.menuService.deleteBeverage(beverage).subscribe({
+      error: (err) => console.error('Error deleting beverage:', err),
+    }
+    );
   }
 
     isAdmin(): any {
    return this.router.url.includes('/admin');
+    }
+
+    goToNextPage(): void {
+      if (this.currentPage < this.totalPages - 1) {
+        this.currentPage++;
+        this.loadBeverages();
+      }
+    }
+  
+    goToPreviousPage(): void {
+      if (this.currentPage > 0) {
+        this.currentPage--;
+        this.loadBeverages();
+      }
     }
 
 }
