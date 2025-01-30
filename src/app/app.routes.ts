@@ -14,9 +14,9 @@ import { EmployeePanelComponent } from './control-forms/employee-panel/employee-
 import { BeveragesAddFormComponent } from './control-forms/beverages-add-form/beverages-add-form.component';
 
 export const routes: Routes = [
-  { 
-    path: 'menu', 
-    component: MainTemplateComponent, 
+  {
+    path: 'menu',
+    component: MainTemplateComponent,
     children: [
       { path: '', redirectTo: 'lunches', pathMatch: 'full' },
       { path: 'lunches', component: LunchesComponent },
@@ -49,11 +49,11 @@ export const routes: Routes = [
       { path: 'dessert-form', component: DessertsAddFormComponent },
       { path: 'beverage-form', component: BeveragesAddFormComponent },
       { path: 'orders', component: OrdersPanelComponent },
-      {path:'employees', component: EmployeePanelComponent}
+      { path:'employees', component: EmployeePanelComponent}
     ],
-    canActivate: [RoleGuard], 
+    canActivate: [RoleGuard],
     data: { roles: ['ADMIN'] }
   },
-  { path: '**', redirectTo: '/menu' }  
+  { path: '**', redirectTo: '/menu' }
 ];
 

@@ -1,15 +1,12 @@
 import { Component, OnInit} from '@angular/core';
-import { inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
-import {GoogleAuthService } from '../services/GoogleAuth/google-auth.service';
+import { CommonModule } from '@angular/common';
+import {AuthService} from '../services/AuthService/auth.service';
 
 const MODULES: any[] = [
   FormsModule,
   ReactiveFormsModule,
-
 ];
-
 
 @Component({
   selector: 'app-auth',
@@ -17,24 +14,25 @@ const MODULES: any[] = [
   styleUrls: ['./auth.component.css'],
   standalone: true,
   imports:[ CommonModule],
-  providers: [MODULES]
+  providers: [MODULES,AuthService]
 })
 
 export class AuthComponent implements OnInit {
-  
- private authService = inject(GoogleAuthService);
 
-  isAuthenticated = this.authService.isAuthenticated$;
-  role = this.authService.userRole$;
+ constructor(private oauthService: AuthService) {}
 
-  signInWithGoogle() {
-    this.authService.login();
+  signIn() {
+    this.oauthService.signIn();
   }
-  logout() {
-    this.authService.logout();
+  logout(): void {
+    this.oauthService.logout();
   }
   ngOnInit() {
-    this.authService.checkAuth();
+    this.oauthService.init();
+    this.isAuthenticated();
+  }
+  isAuthenticated() {
+   return this.oauthService.isAuthenticated();
   }
 
 }

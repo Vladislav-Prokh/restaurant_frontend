@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-import { GoogleAuthService } from '../services/GoogleAuth/google-auth.service';
+import {AuthService} from '../services/AuthService/auth.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
 
-  constructor(private authService: GoogleAuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       const roles = next.data['roles'] || [];
-      const userRole = localStorage.getItem('userRole');
+      const userRole = this.authService.getRole();
 
-      if (!userRole) {
-        this.router.navigate(['/login']);
+      if (userRole==='') {
+        this.router.navigate(['/menu/lunches']);
         return false;
       }
 
       if (roles.includes(userRole)) {
-        console.log('Access granted');
         return true;
       } else {
-        this.router.navigate(['/unauthorized']);
+        this.router.navigate(['/menu/lunches']);
         return false;
       }
   }

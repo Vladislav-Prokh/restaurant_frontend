@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthComponent } from '../auth/auth.component';
-import { CommonModule } from '@angular/common'; 
-import { UserRoleService } from '../services/UserRoleService/user-role.service'
-;
+import { CommonModule } from '@angular/common';
+import {AuthService} from '../services/AuthService/auth.service';
+import {AuthComponent} from '../auth/auth.component';
+
 @Component({
   selector: 'app-main-template',
   imports: [RouterModule,AuthComponent,CommonModule],
@@ -15,11 +15,9 @@ export class MainTemplateComponent {
   isAdmin: boolean = false;
   isWaiter: boolean = false;
 
-  constructor(private userRoleService: UserRoleService) {
-    this.userRoleService.userRole$.subscribe(role => {
-      this.isAdmin = role === 'ADMIN';
-      this.isWaiter = role === 'WAITER';
-    });
+  constructor(private authService: AuthService) {
+    this.isAdmin = this.authService.getRole() === 'ADMIN';
+    this.isWaiter = this.authService.getRole() === 'WAITER';
   }
 
 }

@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GoogleAuthService } from './services/GoogleAuth/google-auth.service'; 
+import { Injectable } from '@angular/core';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private oauthService: OAuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let clonedRequest = req;
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'; 
-    if (isAuthenticated) {
- 
-      clonedRequest = req.clone({
-        withCredentials: true
+    const token = this.oauthService.getAccessToken();
+    if (token) {
+      const clonedRequest = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
       });
+      return next.handle(clonedRequest);
     }
-
-    return next.handle(clonedRequest);
+    return next.handle(req);
   }
 }
