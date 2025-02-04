@@ -3,7 +3,7 @@ import { LunchesComponent } from './lunches/lunches.component';
 import { MainTemplateComponent } from './main-template/main-template.component';
 import { BeveragesComponent } from './beverages/beverages.component';
 import { LunchFromComponent } from './control-forms/lunches-add-form/lunch-form.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminPanelComponent } from './panels/admin-panel/admin-panel.component';
 import { RoleGuard } from './auth/role.guard';
 import { MealsPanelComponent } from './panels/meals-panel/meals-panel.component';
 import { DessertsPanelComponent } from './panels/desserts-panel/desserts-panel.component';
@@ -13,6 +13,7 @@ import { DessertsAddFormComponent } from './control-forms/desserts-add-form/dess
 import { EmployeePanelComponent } from './panels/employee-panel/employee-panel.component';
 import { BeveragesAddFormComponent } from './control-forms/beverages-add-form/beverages-add-form.component';
 import {ParserPanelComponent} from './panels/parser-panel/parser-panel.component';
+import {ReportGeneratorPanelComponent} from './panels/report-generator-panel/report-generator-panel.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +46,7 @@ export const routes: Routes = [
       { path: 'lunches', component: LunchesComponent },
       { path: 'parser', component:  ParserPanelComponent},
       { path: 'meals', component:  MealsPanelComponent},
+      { path: 'reports', component:  ReportGeneratorPanelComponent},
       { path: 'desserts', component:  DessertsPanelComponent},
       { path: 'lunch-form', component: LunchFromComponent },
       { path: 'meal-form', component: MealsAddFormComponent },

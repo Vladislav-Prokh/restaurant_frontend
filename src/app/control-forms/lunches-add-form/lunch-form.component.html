@@ -24,7 +24,7 @@
           <div *ngFor="let dessert of desserts">
             <label for="{{dessert.dessertId}}">{{dessert.dessertName}}</label>
             <input type="radio"
-                   id = "{{dessert.dessertId}}"
+                   id = "{{dessert.dessertId + dessert.dessertName}}"
                    name = "dessertId"
                    value = "{{dessert.dessertId}}"
                    formControlName="dessertId"

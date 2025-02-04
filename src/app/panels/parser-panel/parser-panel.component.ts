@@ -19,7 +19,7 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 
 export class ParserPanelComponent {
   parseDataForm: FormGroup;
-  types = environment.types;
+  types = environment.item_types;
   apiUrl: string = '';
   private amountOfSavedRecords:number = 0;
   wasOccurredError = false;

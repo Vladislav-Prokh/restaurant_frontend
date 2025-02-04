@@ -24,6 +24,7 @@ describe('RoleGuard', () => {
   });
 
   it('should allow access if role matches', () => {
+    // @ts-ignore
     spyOn(authService, 'getRole').and.returnValue('ADMIN');
     const canActivate = roleGuard.canActivate(
       { data: { roles: ['ADMIN'] } } as any,
@@ -33,7 +34,8 @@ describe('RoleGuard', () => {
   });
 
   it('should deny access if role does not match', () => {
-    spyOn(authService, 'getRole').and.returnValue('USER');
+    // @ts-ignore
+    spyOn(authService, 'getRole').and.returnValue('DEFAULT');
     const canActivate = roleGuard.canActivate(
       { data: { roles: ['ADMIN'] } } as any,
       {} as any

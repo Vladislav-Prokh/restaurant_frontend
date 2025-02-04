@@ -1,0 +1,47 @@
+<div id = "reports-content">
+
+    <form [formGroup]="reportForm" (ngSubmit)="onSubmit()" id = "choose-panel">
+    <div id = "parameters-panel">
+        <div id = "report-types">
+          <span>report type:</span>
+          <select formControlName="reportType" required>
+            <option *ngFor="let type of reportTypes" [value]="type">
+              {{ type }}
+            </option>
+          </select>
+        </div>
+      <div id="date-range">
+        <span class = "error"*ngIf="dateError"> error date input</span>
+        <label for="startDate">Start date</label>
+        <input type="date" [value]="'2017-06-01'" id="startDate" formControlName="startDate"/>
+
+        <label for="endDate">End date</label>
+        <input type="date" [value]="'2017-06-01'" id = "endDate" formControlName="endDate"/>
+      </div>
+    </div>
+
+      <div id="waiters-display">
+        <fieldset class="waiter-fieldset">
+          <legend>Choose waiter:</legend>
+          <div class="waiter-option-container">
+            <input type="radio" id="unique" name="waiterEmail" value="ALL" formControlName="waiterEmail" class="waiter-option"/>
+            <label for="unique">ALL</label>
+          </div>
+          <div *ngFor="let waiter of waiters" class="waiter-option-container">
+            <input type="radio" id="{{waiter.employeeId}}" name="waiterEmail" value="{{waiter.employeeEmail}}" formControlName="waiterEmail" class="waiter-option"/>
+            <label for="{{waiter.employeeId}}">ID: {{waiter.employeeId}} - {{waiter.employeeEmail}}</label>
+          </div>
+        </fieldset>
+        <div>
+          <button type = "button" (click) = "previousPage()">prev</button>
+          <button type = "button" (click) = "nextPage()">next</button>
+        </div>
+
+      </div>
+
+        <div id = "generate-btn">
+          <button type="submit">Generate</button>
+        </div>
+
+  </form>
+</div>

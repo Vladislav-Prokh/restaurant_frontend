@@ -3,6 +3,7 @@ export const environment = {
     apiUrl: 'http://localhost:8080',
     authServer: 'http://localhost:9000',
     cuisines: ["Mexican", "Polish", "Italian"],
-  types: ["MEAL","DESSERT","BEVERAGE"],
-  roles: ["ADMIN","WAITER","DEFAULT"],
+    item_types: ["MEAL","DESSERT","BEVERAGE"],
+    roles: ["ADMIN","WAITER","DEFAULT"],
+    report_types: ["PDF","EXCEL"],
 };
