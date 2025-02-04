@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuService } from '../services/MenuService/menu-service'; 
-import { CommonModule } from '@angular/common'; 
+import { MenuService } from '../../services/MenuService/menu-service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-desserts-panel',
   templateUrl: './desserts-panel.component.html',
@@ -10,12 +10,12 @@ import { CommonModule } from '@angular/common';
 })
 export class DessertsPanelComponent implements OnInit {
 
-  desserts: any[] = []; 
+  desserts: any[] = [];
   currentPage: number = 0;
-  pageSize: number = 10;
+  pageSize: number = 8;
   totalPages: number = 0;
   constructor(private menuService: MenuService, private router: Router) {}
- 
+
   ngOnInit(): void {
     this.loadDesserts();
   }

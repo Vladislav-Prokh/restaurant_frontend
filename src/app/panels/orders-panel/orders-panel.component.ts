@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { MenuService } from '../services/MenuService/menu-service';
-import { CommonModule } from '@angular/common'; 
+import { MenuService } from '../../services/MenuService/menu-service';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { environment } from '../environment';
+import { environment } from '../../environment';
 @Component({
   selector: 'app-orders-panel',
   imports: [CommonModule, ReactiveFormsModule],
@@ -17,7 +17,7 @@ export class OrdersPanelComponent implements OnInit {
   lunches: any[] = [];
   beverages: any[] = [];
   availableAdditionals: any[] = [];
-  cuisineTypes: string[] = []; 
+  cuisineTypes: string[] = [];
 
   constructor(private fb: FormBuilder, private orderService: MenuService) {
     this.cuisineTypes = environment.cuisines;
@@ -25,8 +25,8 @@ export class OrdersPanelComponent implements OnInit {
     this.orderForm = this.fb.group({
       lunchId: [null],
       beverageId: [null],
-      mainCourseCuisine: [null], 
-      dessertCuisine: [null], 
+      mainCourseCuisine: [null],
+      dessertCuisine: [null],
       orderedAdditions: this.fb.array([]),
     });
   }
@@ -83,7 +83,7 @@ export class OrdersPanelComponent implements OnInit {
         beverageId: this.orderForm.value.beverageId || null,
         mainCourseCuisine: this.orderForm.value.mainCourseCuisine || null,
         dessertCuisine: this.orderForm.value.dessertCuisine || null,
-        waiterId: localStorage.getItem('user_id'),
+        waiterEmail: localStorage.getItem('user_email'),
         orderedAdditions: orderedAdditions,
       };
 

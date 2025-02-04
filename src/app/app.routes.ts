@@ -5,13 +5,14 @@ import { BeveragesComponent } from './beverages/beverages.component';
 import { LunchFromComponent } from './control-forms/lunches-add-form/lunch-form.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { RoleGuard } from './auth/role.guard';
-import { MealsPanelComponent } from './meals-panel/meals-panel.component';
-import { DessertsPanelComponent } from './desserts-panel/desserts-panel.component';
-import { OrdersPanelComponent } from './orders-panel/orders-panel.component';
+import { MealsPanelComponent } from './panels/meals-panel/meals-panel.component';
+import { DessertsPanelComponent } from './panels/desserts-panel/desserts-panel.component';
+import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
 import { MealsAddFormComponent } from './control-forms/meals-add-form/meals-add-form.component';
 import { DessertsAddFormComponent } from './control-forms/desserts-add-form/desserts-add-form.component';
-import { EmployeePanelComponent } from './control-forms/employee-panel/employee-panel.component';
+import { EmployeePanelComponent } from './panels/employee-panel/employee-panel.component';
 import { BeveragesAddFormComponent } from './control-forms/beverages-add-form/beverages-add-form.component';
+import {ParserPanelComponent} from './panels/parser-panel/parser-panel.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,7 @@ export const routes: Routes = [
       { path: '', component: AdminPanelComponent },
       { path: 'beverages', component: BeveragesComponent },
       { path: 'lunches', component: LunchesComponent },
+      { path: 'parser', component:  ParserPanelComponent},
       { path: 'meals', component:  MealsPanelComponent},
       { path: 'desserts', component:  DessertsPanelComponent},
       { path: 'lunch-form', component: LunchFromComponent },

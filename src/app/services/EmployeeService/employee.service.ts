@@ -8,10 +8,10 @@ import { environment } from '../../environment';
 })
 export class EmployeeService {
 
-  private apiUrl = ''; 
+  private apiUrl = '';
 
   constructor(private http: HttpClient) {
-    this.apiUrl = environment.apiUrl;
+    this.apiUrl = environment.authServer;
   }
 
   getEmployees(): Observable<any> {
@@ -22,12 +22,11 @@ export class EmployeeService {
       })
     );
   }
-
   deleteEmployee(employeeId: number): Observable<any> {
     const url = `${this.apiUrl}/employees/${employeeId}`;
     return this.http.delete<any>(url, { withCredentials: true }).pipe(
       catchError(error => {
-        console.error("Не удалось удалить сотрудника:", error);
+        console.error("Can not delete employee:", error);
         return throwError(error);
       })
     );
@@ -42,5 +41,5 @@ export class EmployeeService {
       })
     );
   }
-  
+
 }

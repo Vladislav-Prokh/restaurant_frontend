@@ -8,7 +8,8 @@ import { environment } from '../../environment';
 
 
 export class MenuService {
-  private apiUrl = ''; 
+  private apiUrl = '';
+
 
   constructor(private http: HttpClient) {
     this.apiUrl = environment.apiUrl;
@@ -112,7 +113,7 @@ export class MenuService {
       },
     });
   }
-  
+
   getBeverages(page: number = 0, size: number = 10): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/menu/beverages`, {
       params: {
@@ -121,7 +122,7 @@ export class MenuService {
       },
     });
   }
-  
+
   getLunches(page: number = 0, size: number = 10): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/menu/lunches`, {
       params: {
@@ -130,7 +131,7 @@ export class MenuService {
       },
     });
   }
-  
+
   getAdditionals(page: number = 0, size: number = 10): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/menu/additionals`, {
       params: {
@@ -139,5 +140,5 @@ export class MenuService {
       },
     });
   }
-  
+
 }

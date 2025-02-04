@@ -1,5 +1,8 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:8080',
-    cuisines: ["Mexican", "Polish", "Italian"]
-  };
+    authServer: 'http://localhost:9000',
+    cuisines: ["Mexican", "Polish", "Italian"],
+  types: ["MEAL","DESSERT","BEVERAGE"],
+  roles: ["ADMIN","WAITER","DEFAULT"],
+};

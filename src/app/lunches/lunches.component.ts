@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/MenuService/menu-service';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class LunchesComponent implements OnInit {
 
   lunches: any[] = [];
   currentPage: number = 0;
-  pageSize: number = 10;
+  pageSize: number = 9;
   totalPages: number = 0;
 
   constructor(private menuService: MenuService, private router: Router) {}

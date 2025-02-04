@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from '../../services/MenuService/menu-service';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-beverages-add-form',
   imports: [CommonModule,ReactiveFormsModule],
@@ -12,8 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 export class BeveragesAddFormComponent {
-  beverageForm: FormGroup; 
-  additionalForm: FormGroup; 
+  beverageForm: FormGroup;
+  additionalForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -23,7 +24,9 @@ export class BeveragesAddFormComponent {
 
     this.beverageForm = this.fb.group({
       beverageName: ['', Validators.required],
-      beveragePrice: [null, [Validators.required, Validators.min(0)]]
+      beveragePrice: [null, [Validators.required, Validators.min(0)]],
+      description: ['', Validators.required],
+
     });
 
     this.additionalForm = this.fb.group({
@@ -36,13 +39,14 @@ export class BeveragesAddFormComponent {
     if (this.beverageForm.valid) {
       const beverageData = {
         beverageName: this.beverageForm.value.beverageName,
-        beveragePrice: this.beverageForm.value.beveragePrice
+        beveragePrice: this.beverageForm.value.beveragePrice,
+        description: this.beverageForm.value.description
       };
 
       this.menuService.addBeverage(beverageData).subscribe(
         response => {
           console.log('Beverage successfully added:', response);
-          this.beverageForm.reset(); 
+          this.beverageForm.reset();
         },
         error => {
           console.error('Error adding beverage:', error);

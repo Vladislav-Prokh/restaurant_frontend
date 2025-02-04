@@ -17,7 +17,7 @@ export class AuthService {
 
   logout(): void {
     this.oauthService.logOut();
-    this.userRole = '';
+    localStorage.removeItem('role');
   }
 
   init() {
@@ -28,6 +28,7 @@ export class AuthService {
         const decodedToken: any = jwtDecode(token);
         this.userRole = decodedToken.roles || '';
         localStorage.setItem('role',this.userRole);
+        localStorage.setItem('user_email', decodedToken.sub);
       }
     }).catch((error) => {
       console.error('Error during login or discovery document load', error);

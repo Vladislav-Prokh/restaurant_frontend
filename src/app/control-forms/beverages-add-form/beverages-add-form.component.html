@@ -2,7 +2,7 @@
     <div class="form-container">
       <h2>Add Beverage</h2>
       <form [formGroup]="beverageForm" (ngSubmit)="onSubmitBeverage()" novalidate>
-        
+
         <div class="form-group">
           <label for="beverageName">Beverage Name</label>
           <input id="beverageName" type="text" formControlName="beverageName" required />
@@ -10,7 +10,14 @@
             Please enter the beverage name.
           </div>
         </div>
-  
+        <div class="form-group">
+          <label for="description">Beverage Description</label>
+          <input id="description" type="text" formControlName="description" required />
+          <div *ngIf="beverageForm.get('description')?.invalid && beverageForm.get('description')?.touched" class="error">
+            Please enter the beverage description.
+          </div>
+        </div>
+
         <div class="form-group">
           <label for="beveragePrice">Beverage Price</label>
           <input id="beveragePrice" type="number" formControlName="beveragePrice" required />
@@ -18,15 +25,15 @@
             Please enter a valid price.
           </div>
         </div>
-  
+
         <button type="submit" [disabled]="beverageForm.invalid">Add Beverage</button>
       </form>
     </div>
-  
+
     <div class="form-container">
       <h2>Add Beverage Additional</h2>
       <form [formGroup]="additionalForm" (ngSubmit)="onSubmitAdditional()" novalidate>
-  
+
         <div class="form-group">
           <label for="additionalName">Additional Name</label>
           <input id="additionalName" type="text" formControlName="beverageAdditionalName" required />
@@ -34,7 +41,7 @@
             Please enter the additional name.
           </div>
         </div>
-  
+
         <div class="form-group">
           <label for="additionalPrice">Additional Price</label>
           <input id="additionalPrice" type="number" formControlName="beverageAdditionalPrice" required />
@@ -42,10 +49,9 @@
             Please enter a valid price.
           </div>
         </div>
-  
+
         <button type="submit" [disabled]="additionalForm.invalid">Add Additional</button>
       </form>
     </div>
-  
+
   </div>
-  

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../services/MenuService/menu-service';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 @Component({
     selector: 'app-beverages',
@@ -17,7 +17,7 @@ export class BeveragesComponent implements OnInit {
   totalPages: number = 0;
 
   constructor(private menuService: MenuService, private router: Router) {}
-  
+
   ngOnInit(): void {
     this.loadBeverages();
   }
@@ -50,7 +50,7 @@ export class BeveragesComponent implements OnInit {
         this.loadBeverages();
       }
     }
-  
+
     goToPreviousPage(): void {
       if (this.currentPage > 0) {
         this.currentPage--;

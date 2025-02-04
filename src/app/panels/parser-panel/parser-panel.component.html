@@ -1,0 +1,52 @@
+
+
+
+<div id="parser-content">
+
+
+  <div class = "alert-panel">
+    <div id = "success-alert" *ngIf="getAmountOfSavedRecords()!=0">
+      <span>Web site was successfully parsed and saved </span>{{this.getAmountOfSavedRecords()}} <span>records</span>
+      <button (click)="closeSuccessAlert()">X</button>
+    </div>
+    <div id = "error-alert" *ngIf="wasOccurredError">
+      <p id="parse-error">There is an error during parsing web site</p>
+      <button (click)="closeErrorAlert()">X</button>
+    </div>
+  </div>
+
+  <form [formGroup]="parseDataForm" (ngSubmit)="onSubmit()">
+
+    <label for="url-field">Website URL:</label>
+    <input type="text" name="url-field" id="url-field" formControlName="urlWebsite" required>
+
+    <label for="userAgent">user agent:</label>
+    <input type="text" name="" id="userAgent" value="Chrome/4.0.249.0 Safari/532.5" formControlName="userAgent" required>
+
+    <label for="referrer">referrer</label>
+    <input type="text" name="" id = "referrer" value="https://www.google.com" formControlName="referrer" required>
+
+    <label for="itemType">item type:</label>
+    <select  id="itemType" formControlName="itemType" required >
+      <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+    </select>
+
+    <label for="list-class">class of product list</label>
+    <input type="text" name="" id = "list-class" formControlName="listClass" required>
+
+    <label for="name-class">class of name of product:</label>
+    <input type="text" name="" id = "name-class" formControlName="nameClass" required>
+
+
+      <label for="description-class">class of description of product:</label>
+      <input type="text" name="" id = "description-class" formControlName="descriptionClass" required>
+
+
+    <label for="price-class">class of price of product:</label>
+    <input type="text" name="" id = "price-class" formControlName="priceClass" required>
+
+    <button type = "submit">Parse</button>
+
+  </form>
+
+</div>

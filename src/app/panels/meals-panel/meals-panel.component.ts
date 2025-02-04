@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuService } from '../services/MenuService/menu-service'; 
-import { CommonModule } from '@angular/common'; 
+import { MenuService } from '../../services/MenuService/menu-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-meals-panel',
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class MealsPanelComponent implements OnInit {
   meals: any[] = [];
   currentPage: number = 0;
-  pageSize: number = 10;
+  pageSize: number = 12;
   totalPages: number = 0;
 
   constructor(private menuService: MenuService, private router: Router) {}
@@ -33,7 +33,7 @@ export class MealsPanelComponent implements OnInit {
       },
     });
   }
-  
+
   isAdmin(): boolean {
     return this.router.url.includes('/admin');
   }

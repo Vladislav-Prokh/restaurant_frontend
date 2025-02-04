@@ -3,10 +3,12 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideOAuthClient } from 'angular-oauth2-oidc';
+import { provideOAuthClient} from 'angular-oauth2-oidc';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.intercepter';
+import { AuthInterceptor } from './auth.interceptor';
+
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,9 +17,9 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(
       withFetch(),
-      withInterceptorsFromDi() 
+      withInterceptorsFromDi()
     ),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideOAuthClient(),
     provideAnimationsAsync(),
   ]

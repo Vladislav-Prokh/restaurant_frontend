@@ -1,5 +1,4 @@
 #desserts-content {
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -104,8 +103,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
     padding-bottom: 20px;
+    margin-top: 25px;
 }
 
 .pagination-controls button {

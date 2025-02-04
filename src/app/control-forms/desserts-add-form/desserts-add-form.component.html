@@ -9,18 +9,14 @@
             Please enter the dessert name.
           </div>
         </div>
-  
         <div class="form-group">
-          <label for="cuisine">Dessert Cuisine</label>
-          <select id="cuisine" formControlName="cuisine" required>
-            <option value="" disabled selected>Select Cuisine</option>
-            <option *ngFor="let cuisine of cuisines" [value]="cuisine">{{ cuisine }}</option>
-          </select>
-          <div *ngIf="dessertForm.get('cuisine')?.invalid && dessertForm.get('cuisine')?.touched" class="error">
-            Please select a cuisine.
+          <label for="description">Dessert description</label>
+          <input id="description" type="text" formControlName="description" required />
+          <div *ngIf="dessertForm.get('description')?.invalid && dessertForm.get('description')?.touched" class="error">
+            Please enter the dessert description.
           </div>
         </div>
-  
+
         <div class="form-group">
           <label for="dessertPrice">Dessert Price</label>
           <input id="dessertPrice" type="number" formControlName="dessertPrice" required />
@@ -28,9 +24,8 @@
             Please enter a valid price.
           </div>
         </div>
-  
+
         <button type="submit" [disabled]="dessertForm.invalid">Submit</button>
       </form>
     </div>
   </div>
-  

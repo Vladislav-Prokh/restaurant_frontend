@@ -1,12 +1,13 @@
 <div class="form-container">
   <h2>Create Order</h2>
   <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+
     <div class="form-group">
       <label for="lunch">Lunch</label>
       <select id="lunch" formControlName="lunchId">
         <option value="" disabled>Select Lunch (optional)</option>
         <option *ngFor="let lunch of lunches" [value]="lunch.lunchId">
-          {{ lunch.mainCourse.mealName }} and {{ lunch.dessert.dessertName }} - 
+          {{ lunch.mainCourse.mealName }} and {{ lunch.dessert.dessertName }} -
           ${{ lunch.mainCourse.mealPrice + lunch.dessert.dessertPrice }}
         </option>
       </select>
