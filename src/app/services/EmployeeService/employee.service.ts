@@ -31,21 +31,12 @@ export class EmployeeService {
   deleteEmployee(employeeId: number): Observable<any> {
     const url = `${this.apiUrl}/employees/${employeeId}`;
     return this.http.delete<any>(url, { withCredentials: true }).pipe(
-      catchError(error => {
-        console.error("Can not delete employee:", error);
-        return throwError(error);
-      })
     );
   }
   assignRole(employeeId: number, role: string): Observable<any> {
     const url = `${this.apiUrl}/employees/${employeeId}/role`;
     const data = { role };
-    return this.http.post<any>(url, data, { withCredentials: true }).pipe(
-      catchError(error => {
-        console.error("Can not assign role:", error);
-        return throwError(error);
-      })
-    );
+    return this.http.post<any>(url, data, { withCredentials: true });
   }
 
 }

@@ -5,5 +5,5 @@ export const environment = {
     cuisines: ["Mexican", "Polish", "Italian"],
     item_types: ["MEAL","DESSERT","BEVERAGE"],
     roles: ["ADMIN","WAITER","DEFAULT"],
-    report_types: ["PDF","EXCEL"],
+    report_types: ["pdf","xls"],
 };

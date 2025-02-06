@@ -11,10 +11,9 @@
           </select>
         </div>
       <div id="date-range">
-        <span class = "error"*ngIf="dateError"> error date input</span>
+        <span class = "error" *ngIf="dateError"> error date input</span>
         <label for="startDate">Start date</label>
         <input type="date" [value]="'2017-06-01'" id="startDate" formControlName="startDate"/>
-
         <label for="endDate">End date</label>
         <input type="date" [value]="'2017-06-01'" id = "endDate" formControlName="endDate"/>
       </div>
@@ -38,10 +37,8 @@
         </div>
 
       </div>
-
         <div id = "generate-btn">
           <button type="submit">Generate</button>
         </div>
-
   </form>
 </div>
