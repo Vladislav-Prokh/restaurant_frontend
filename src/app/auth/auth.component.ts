@@ -23,6 +23,7 @@ export class AuthComponent implements OnInit {
 
   signIn() {
     this.oauthService.signIn();
+
   }
   logout(): void {
     this.oauthService.logout();
