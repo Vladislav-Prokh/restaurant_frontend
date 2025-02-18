@@ -3,7 +3,14 @@
     <a href="/admin/lunch-form" class="add-btn">Add Lunch</a>
   </div>
 
+  <div id = "searchPanel">
+    <label for="search">Search lunches:</label>
+    <input type="search" id="search" name="gsearch" [(ngModel)]="searchQuery">
+    <button (click)="searchLunch()">find</button>
+  </div>
+
   <div class="lunches-container">
+
     <div *ngFor="let lunch of lunches" class="lunch-item">
       <div class="lunch-info">
         <h3>Main Course</h3>

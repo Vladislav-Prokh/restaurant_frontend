@@ -13,7 +13,7 @@ export class BeveragesComponent implements OnInit {
 
   beverages: any[] = [];
   currentPage: number = 0;
-  pageSize: number = 10;
+  pageSize: number = 6;
   totalPages: number = 0;
 
   constructor(private menuService: MenuService, private router: Router) {}

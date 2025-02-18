@@ -89,7 +89,6 @@ export class OrdersPanelComponent implements OnInit {
 
       this.orderService.addOrder(orderData).subscribe(
         (response) => {
-          console.log('The order has added:', response);
           location.reload();
         },
         (error) => {

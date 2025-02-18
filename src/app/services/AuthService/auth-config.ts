@@ -7,7 +7,7 @@ export const authCodeFlowConfig: AuthConfig = {
   redirectUri: "http://localhost:4200/menu/beverages",
   clientId: 'oidc-client',
   responseType: 'code',
-  scope: 'openid profile offline_access',
+  scope: 'openid profile offline_access email',
   showDebugInformation: true,
   strictDiscoveryDocumentValidation: false,
   tokenEndpoint:'http://localhost:9000/oauth2/token',

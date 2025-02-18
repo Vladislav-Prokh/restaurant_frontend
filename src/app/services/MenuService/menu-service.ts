@@ -141,4 +141,11 @@ export class MenuService {
     });
   }
 
+  findLunchesByQuery(searchQuery: String): Observable<any>  {
+    return this.http.get<any>(`${this.apiUrl}/elastic/lunches`, {
+      params: {
+        query: searchQuery.toString(),
+      }
+    })
+  }
 }

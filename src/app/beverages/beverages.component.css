@@ -4,6 +4,7 @@
   color: #333;
   font-size: 24px;
   text-align: center;
+  display: inline;
 }
 
 .beverages-container {

@@ -14,6 +14,7 @@ import { EmployeePanelComponent } from './panels/employee-panel/employee-panel.c
 import { BeveragesAddFormComponent } from './control-forms/beverages-add-form/beverages-add-form.component';
 import {ParserPanelComponent} from './panels/parser-panel/parser-panel.component';
 import {ReportGeneratorPanelComponent} from './panels/report-generator-panel/report-generator-panel.component';
+import {OrdersComponent} from './orders/orders.component';
 
 export const routes: Routes = [
   {
@@ -52,7 +53,7 @@ export const routes: Routes = [
       { path: 'meal-form', component: MealsAddFormComponent },
       { path: 'dessert-form', component: DessertsAddFormComponent },
       { path: 'beverage-form', component: BeveragesAddFormComponent },
-      { path: 'orders', component: OrdersPanelComponent },
+      { path: 'orders', component: OrdersComponent },
       { path:'employees', component: EmployeePanelComponent}
     ],
     canActivate: [RoleGuard],
