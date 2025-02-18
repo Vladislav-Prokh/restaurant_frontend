@@ -1,0 +1,36 @@
+<div id="orders-component-content">
+  <div id="date-range">
+    <label for="startDate">Start date: </label>
+    <input type="date" [value]="'2017-06-01'" id="startDate" />
+    <p>
+    <label for="endDate">End date: </label>
+    <input type="date" [value]="'2017-06-01'" id = "endDate"/>
+  </div>
+  <div class="container">
+
+    <h2>Orders</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Waiter sub</th>
+        <th>Created At</th>
+        <th>Total Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.orders_id }}</td>
+        <td>{{ order.waiterEmail }}</td>
+        <td>{{ order.created_at }}</td>
+        <td>${{ (order.beveragePrice + order.dessertPrice + order.mainCoursePrice).toFixed(2) }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-controls">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 0">Previous</button>
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button (click)="goToNextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+  </div>
+</div>
