@@ -17,12 +17,17 @@ export class LunchesComponent implements OnInit {
   currentPage: number = 0;
   pageSize: number = 9;
   totalPages: number = 0;
-  searchQuery: String = '';
+  searchQuery: string = '';
+  lunchesPriceEdgeCondition: string = '';
+  priceEdge: number = 300;
+  amountRecordsGreaterEdge: number = 0;
+  amountRecordsLessEdge: number = 0;
 
   constructor(private menuService: MenuService, private router: Router) {}
 
   ngOnInit(): void {
      this.loadLunches();
+     this.getEdgeCount();
   }
 
   loadLunches(): void {
@@ -37,18 +42,28 @@ export class LunchesComponent implements OnInit {
     });
   }
 
+  getEdgeCount() {
+    this.menuService.getEdgeCounts(this.priceEdge).subscribe({
+      next: (data) => {
+        this.amountRecordsGreaterEdge = data.amountGreaterEdge;
+        this.amountRecordsLessEdge = data.amountLessEdge;
+      }
+    });
+  }
+
+
   isAdmin(): boolean {
     return this.router.url.includes('/admin');
   }
 
   searchLunch() {
-    if(this.searchQuery !== '') {
-     this.menuService.findLunchesByQuery(this.searchQuery).subscribe({
+    if(this.searchQuery!==''|| this.lunchesPriceEdgeCondition!=='')
+     this.menuService.findLunchesByQuery(this.searchQuery,this.lunchesPriceEdgeCondition, this.priceEdge).subscribe({
        next: (data) => {
+         console.log(data);
          this.lunches = data||[]
        }
      });
-    }
   }
 
   removeLunch(lunch: any): void {

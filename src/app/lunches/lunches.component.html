@@ -9,8 +9,19 @@
     <button (click)="searchLunch()">find</button>
   </div>
 
-  <div class="lunches-container">
+  <fieldset>
+    <legend>Price</legend>
+    <div>
+      <input type="radio" id="lessPrice" name="price" value="less" [(ngModel)]="lunchesPriceEdgeCondition"  (change)="searchLunch()"/>
+      <label for="lessPrice">Price < {{priceEdge}}$ <small>({{this.amountRecordsLessEdge}})</small></label>
+    </div>
+    <div>
+      <input type="radio" id="greaterPrice" name="price" value="more" [(ngModel)]="lunchesPriceEdgeCondition" (change)="searchLunch()"/>
+      <label for="greaterPrice">Price > {{priceEdge}}$  <small>({{this.amountRecordsGreaterEdge}})</small></label>
+    </div>
+  </fieldset>
 
+  <div class="lunches-container">
     <div *ngFor="let lunch of lunches" class="lunch-item">
       <div class="lunch-info">
         <h3>Main Course</h3>
@@ -23,7 +34,6 @@
       <p class="total-price">
         Total Price: {{ lunch.mainCourse.mealPrice + lunch.dessert.dessertPrice }}<small>$</small>
       </p>
-
       <div *ngIf="isAdmin()">
         <button (click)="removeLunch(lunch)" class="remove-btn">Remove</button>
       </div>

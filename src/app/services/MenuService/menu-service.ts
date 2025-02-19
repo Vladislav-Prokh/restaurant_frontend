@@ -141,11 +141,22 @@ export class MenuService {
     });
   }
 
-  findLunchesByQuery(searchQuery: String): Observable<any>  {
+  findLunchesByQuery(searchQuery: String,lunchesPriceEdge: string, priceEdge:number): Observable<any>  {
     return this.http.get<any>(`${this.apiUrl}/elastic/lunches`, {
       params: {
         query: searchQuery.toString(),
+        lunchesPriceEdgeCondition: lunchesPriceEdge.toString(),
+        priceEdge: priceEdge.toString(),
       }
     })
   }
+
+  getEdgeCounts(priceEdge: number):Observable<any>  {
+    return this.http.get<any>(`${this.apiUrl}/elastic/lunches/price-edge`, {
+      params: {
+        priceEdge: priceEdge.toString(),
+      }
+    })
+  }
+
 }
