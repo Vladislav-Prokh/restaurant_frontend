@@ -28,7 +28,7 @@ export class AuthService {
         const decodedToken: any = jwtDecode(token);
         this.userRole = decodedToken.roles || '';
         localStorage.setItem('role',this.userRole);
-        localStorage.setItem('user_email', decodedToken.sub);
+        localStorage.setItem('user_email', decodedToken.email);
       }
     }).catch((error) => {
       console.error('Error during login or discovery document load', error);
