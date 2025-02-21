@@ -1,0 +1,60 @@
+#specific-lunch-content {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #f8f7f7;
+}
+
+#lunch-details {
+  display: block;
+  width: 80%;
+  max-width: 900px;
+  height: 50%;
+  justify-content: center;
+  border-radius: 10px;
+
+}
+
+#main-course-details,
+#dessert-details {
+  height: 45%;
+  width: 90%;
+  margin: 10px auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#main-course-details {
+  border-left: 6px solid #86d589;
+}
+
+#dessert-details {
+  border-left: 6px solid #a2e4e3;
+}
+
+#total-price {
+  margin: 20px auto;
+  width: 60%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 15px;
+  background-color: #FFEB3B;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+small {
+  font-size: 0.9rem;
+  color: #888;
+}

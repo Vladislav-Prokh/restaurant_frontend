@@ -15,6 +15,7 @@ import { BeveragesAddFormComponent } from './control-forms/beverages-add-form/be
 import {ParserPanelComponent} from './panels/parser-panel/parser-panel.component';
 import {ReportGeneratorPanelComponent} from './panels/report-generator-panel/report-generator-panel.component';
 import {OrdersComponent} from './orders/orders.component';
+import {SpecificLunchComponent} from './specific-lunch/specific-lunch.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'lunches', pathMatch: 'full' },
       { path: 'lunches', component: LunchesComponent },
+      { path: 'lunches/:id', component: SpecificLunchComponent },
       { path: 'beverages', component: BeveragesComponent },
     ]
   },

@@ -1,0 +1,18 @@
+<div id="specific-lunch-content">
+  <div id="lunch-details">
+    <div id="main-course-details">
+      <p>Meal: {{ this.lunch?.mainCourse?.mealName }}</p>
+      <p>description: {{ this.lunch?.mainCourse?.description }}</p>
+      <p>price {{ this.lunch?.mainCourse?.mealPrice }} <small>$</small></p>
+    </div>
+
+    <div id="dessert-details">
+      <p>Dessert: {{ this.lunch?.dessert?.dessertName }}</p>
+      <p>description: {{ this.lunch?.dessert?.description }}</p>
+      <p>price: {{ this.lunch?.dessert?.dessertPrice }} <small>$</small></p>
+    </div>
+    <div id = "total-price">
+      <span>Total: {{this.lunch?.mainCourse?.mealPrice + this.lunch?.dessert?.dessertPrice }} </span><small>$</small>
+    </div>
+  </div>
+</div>

@@ -51,23 +51,24 @@ export class LunchesComponent implements OnInit {
     });
   }
 
-
   isAdmin(): boolean {
     return this.router.url.includes('/admin');
   }
-
   searchLunch() {
     if(this.searchQuery!==''|| this.lunchesPriceEdgeCondition!=='')
      this.menuService.findLunchesByQuery(this.searchQuery,this.lunchesPriceEdgeCondition, this.priceEdge).subscribe({
        next: (data) => {
-         console.log(data);
          this.lunches = data||[]
        }
      });
   }
 
   removeLunch(lunch: any): void {
-    this.menuService.deleteLunch(lunch);
+    this.menuService.deleteLunch(lunch).subscribe({
+      next: (data) => {
+        console.log(data);
+      }
+    });
   }
 
   goToNextPage(): void {

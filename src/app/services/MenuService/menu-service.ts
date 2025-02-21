@@ -18,7 +18,6 @@ export class MenuService {
 
   private deleteItem(endpoint: string, id: string): Observable<any> {
     const url = `${this.apiUrl}/menu/${endpoint}/${id}`;
-    console.log(`Attempting to delete: ${endpoint} with ID: ${id}`);
     return this.http.delete<any>(url).pipe(
       catchError(error => {
         console.error(`Error deleting ${endpoint}:`, error);
@@ -159,4 +158,7 @@ export class MenuService {
     })
   }
 
+  getLunchById(lunchId: number) :Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/menu/lunches/${lunchId}`);
+  }
 }

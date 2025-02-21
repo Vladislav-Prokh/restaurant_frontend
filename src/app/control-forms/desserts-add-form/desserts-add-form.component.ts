@@ -14,6 +14,7 @@ import { environment } from '../../environment';
 export class DessertsAddFormComponent {
   dessertForm: FormGroup;
   cuisines: string[] = [];
+
   constructor(
     private fb: FormBuilder,
     private dessertService: MenuService
@@ -42,9 +43,6 @@ export class DessertsAddFormComponent {
         response => {
           console.log('Dessert successfully added:', response);
           this.dessertForm.reset();
-        },
-        error => {
-          console.error('There is an error during saving dessert:', error);
         }
       );
     }
