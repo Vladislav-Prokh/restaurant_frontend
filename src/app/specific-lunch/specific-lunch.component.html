@@ -11,8 +11,21 @@
       <p>description: {{ this.lunch?.dessert?.description }}</p>
       <p>price: {{ this.lunch?.dessert?.dessertPrice }} <small>$</small></p>
     </div>
+
     <div id = "total-price">
       <span>Total: {{this.lunch?.mainCourse?.mealPrice + this.lunch?.dessert?.dessertPrice }} </span><small>$</small>
     </div>
+
+    <div>
+      <span>Quantity: <input type="number" [(ngModel)]="lunchQuantity" id = "quantity-lunches"></span>
+    </div>
+
+    <form (ngSubmit)="buyLunch(lunchQuantity)" id = "buy-form">
+      <button id = "buy-button" type="submit">
+        Buy
+      </button>
+    </form>
+
   </div>
+
 </div>

@@ -16,7 +16,8 @@ import {ParserPanelComponent} from './panels/parser-panel/parser-panel.component
 import {ReportGeneratorPanelComponent} from './panels/report-generator-panel/report-generator-panel.component';
 import {OrdersComponent} from './orders/orders.component';
 import {SpecificLunchComponent} from './specific-lunch/specific-lunch.component';
-
+import {PaymentSuccessComponent} from './payment-result-handlers/payment-success/payment-success.component';
+import {PaymentCanceledComponent} from './payment-result-handlers/payment-canceled/payment-canceled.component';
 export const routes: Routes = [
   {
     path: 'menu',
@@ -27,6 +28,15 @@ export const routes: Routes = [
       { path: 'lunches/:id', component: SpecificLunchComponent },
       { path: 'beverages', component: BeveragesComponent },
     ]
+  },
+  {
+    path:'payment',
+    component: MainTemplateComponent,
+    children: [
+      { path: 'success', component: PaymentSuccessComponent },
+      { path: 'error', component: PaymentCanceledComponent },
+    ]
+
   },
   {
     path:'orders',

@@ -13,7 +13,7 @@
   height: 50%;
   justify-content: center;
   border-radius: 10px;
-
+  margin-bottom:15%;
 }
 
 #main-course-details,
@@ -58,3 +58,38 @@ small {
   font-size: 0.9rem;
   color: #888;
 }
+
+#buy-form{
+  display: flex;
+  height: 10%;
+}
+
+#quantity-lunches{
+  margin:10px;
+  width: 15%;
+  border-radius: 10px;
+
+}
+
+#buy-button{
+  display: block;
+  margin: auto;
+  justify-content: center;
+  background-color: #86d589;
+  height: 100%;
+  width: 25%;
+  border-radius: 10%;
+  color: #ffffff;
+  border: none;
+}
+
+#buy-button:hover{
+  scale: calc(1.01);
+  background-color: #5cb85c;
+}
+
+#quantity-lunches{
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+}
+
