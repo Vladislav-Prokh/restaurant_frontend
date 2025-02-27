@@ -3,6 +3,8 @@ import { MenuService } from '../services/MenuService/menu-service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {PaymentService} from '../services/PaymentService/payment.service';
+
 
 @Component({
   selector: 'app-lunches',
@@ -23,7 +25,7 @@ export class LunchesComponent implements OnInit {
   amountRecordsGreaterEdge: number = 0;
   amountRecordsLessEdge: number = 0;
 
-  constructor(private menuService: MenuService, private router: Router) {}
+  constructor(private menuService: MenuService, private router: Router, private paymentService: PaymentService,) {}
 
   ngOnInit(): void {
      this.loadLunches();
@@ -84,5 +86,7 @@ export class LunchesComponent implements OnInit {
       this.loadLunches();
     }
   }
-
+  subscribe() {
+    this.paymentService.createSubscribeLunchCheckoutSession();
+  }
 }

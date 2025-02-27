@@ -223,3 +223,23 @@ label {
 a{
   text-decoration: none;
 }
+#subscribe-panel{
+
+}
+#subscribe-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  float: right;
+}
+
+#subscribe-button:hover{
+  background-color: #218838;
+  scale: calc(1.01);
+}
