@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {AuthService} from '../services/AuthService/auth.service';
+import {RouterLink} from "@angular/router";
 
 const MODULES: any[] = [
   FormsModule,
@@ -13,7 +14,7 @@ const MODULES: any[] = [
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
   standalone: true,
-  imports:[ CommonModule],
+    imports: [CommonModule],
   providers: [MODULES,AuthService]
 })
 

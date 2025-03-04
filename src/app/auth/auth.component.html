@@ -1,7 +1,7 @@
 <div class="auth-panel">
 
-  <button *ngIf="!isAuthenticated()" class="login-button" (click)="signIn()">Login</button>
+  <button *ngIf="!isAuthenticated()" class="login-button" (click)="signIn()"  i18n>Login</button>
 
-  <button *ngIf="isAuthenticated()" class="logout-button" (click)="logout()">Logout</button>
+  <button *ngIf="isAuthenticated()" class="logout-button" (click)="logout()"  i18n>Logout</button>
 </div>
 

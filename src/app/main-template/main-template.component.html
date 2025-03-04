@@ -2,11 +2,11 @@
 <div>
   <app-auth></app-auth>
   <div class="sidebar">
-    <a routerLink="/menu/lunches">Lunches</a>
-    <a routerLink="/menu/beverages">Beverages</a>
+    <a routerLink="/menu/lunches"  i18n>Lunches</a>
+    <a routerLink="/menu/beverages" i18n>Beverages</a>
 
     <a *ngIf="isAdmin" routerLink="/admin">Admin Panel</a>
-    <a  *ngIf="isWaiter" routerLink="/orders">Make Order</a>
+    <a  *ngIf="isWaiter" routerLink="/orders"  i18n>Make Order</a>
   </div>
 
   <div class="router-outlet">
