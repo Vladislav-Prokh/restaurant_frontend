@@ -16,6 +16,8 @@ export class MealsPanelComponent implements OnInit {
   pageSize: number = 12;
   totalPages: number = 0;
 
+
+
   constructor(private menuService: MenuService, private router: Router) {}
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class MealsPanelComponent implements OnInit {
         this.totalPages = Math.ceil(data.page.totalElements / this.pageSize);
       },
       error: (err) => {
-        console.error('Error fetching meals:', err);
+        console.log(err);
       },
     });
   }

@@ -16,6 +16,7 @@ import { environment } from '../../environment';
 export class MealsAddFormComponent implements OnInit {
   mealForm: FormGroup;
   cuisines: string[] = [];
+  error: any;
   constructor(
     private fb: FormBuilder,
     private menuService: MenuService
@@ -38,8 +39,8 @@ export class MealsAddFormComponent implements OnInit {
           console.log('Successfully added:', response);
           this.mealForm.reset();
         },
-        (error) => {
-          console.error('Error during saving dish:', error);
+        (errorResponse) => {
+         this.error = errorResponse.error.error;
         }
       );
     }

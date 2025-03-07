@@ -16,7 +16,6 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
   styleUrl: './parser-panel.component.css'
 })
 
-
 export class ParserPanelComponent {
   parseDataForm: FormGroup;
   types = environment.item_types;

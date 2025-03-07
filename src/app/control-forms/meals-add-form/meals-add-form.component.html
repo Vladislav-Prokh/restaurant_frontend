@@ -1,4 +1,9 @@
 <div class="form-container">
+
+  <div *ngIf="this.error" class="error">
+    {{error}}
+  </div>
+
   <h2>Add Dish</h2>
   <form [formGroup]="mealForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
@@ -23,8 +28,6 @@
         Please specify the dish price.
       </div>
     </div>
-
-
 
     <button type="submit" [disabled]="mealForm.invalid">Add Dish</button>
   </form>

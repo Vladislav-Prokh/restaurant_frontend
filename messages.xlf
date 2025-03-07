@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="2454050363478003966" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3797778920049399855" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5180626799765493589" datatype="html">
+        <source>Search lunches:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/lunches/lunches.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="909928153312032853" datatype="html">
+        <source>find</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/lunches/lunches.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9187983728198592347" datatype="html">
+        <source>Subscribe<x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fas fa-star&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/lunches/lunches.component.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7097376734292646740" datatype="html">
+        <source>Lunches</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-template/main-template.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5510409215471377845" datatype="html">
+        <source>Beverages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-template/main-template.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1777284936392822435" datatype="html">
+        <source>Make Order</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/main-template/main-template.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
