@@ -1,24 +1,41 @@
-import { Injectable } from '@angular/core';
-import { getMessaging, getToken, onMessage } from '@firebase/messaging';
-import { environment } from '../../environment';
-import { getAnalytics } from '@angular/fire/analytics';
-import { initializeApp } from '@angular/fire/app';
+import {Component, OnInit} from '@angular/core';
+import {getMessaging, getToken, onMessage} from "firebase/messaging";
+import {environment} from '../../environment';
+import {BehaviorSubject} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class NotificationService {
+export class NotificationServiceService implements OnInit {
 
- // messaging;
+  private messageSource = new BehaviorSubject<any>(null);
+  public currentMessage = this.messageSource.asObservable();
 
-  constructor() {
-    //const app = initializeApp(environment.firebaseConfig);
-    //const analytics = getAnalytics(app);
-    //this.messaging = getMessaging(app);
+  ngOnInit(): void {
+    this.requestPermission();
+    this.listenForMessages();
   }
 
+  requestPermission() {
+    const messaging = getMessaging();
+    getToken(messaging, {vapidKey: environment.firebase.vapidKey}).then(token => {
+      if (!token) {
+        console.log('No registration token available. Request permission to generate one.');
+      }
+    }).catch((err) => {
+      console.log('An error occurred while retrieving token. ', err);
+    });
+  }
 
-
-
+  listenForMessages() {
+    const messaging = getMessaging();
+    onMessage(messaging, (payload) => {
+      this.messageSource.next(payload);
+    });
+  }
 
 }
+

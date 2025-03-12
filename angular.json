@@ -22,8 +22,7 @@
             "styles": ["src/styles.css"],
             "scripts": [],
             "localize": true,
-            "i18nMissingTranslation": "error",
-            "externalDependencies": ["@angular/animations/browser"]
+            "i18nMissingTranslation": "error"
 
           },
           "configurations": {

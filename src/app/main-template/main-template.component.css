@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -12,13 +12,11 @@
     height: 100vh;
     flex-direction: column;
   }
-  
+
   h1 {
     margin: 0;
   }
-  
-  
-  
+
   .sidebar {
     width: 250px;
     background-color: #2c3e50;
@@ -31,7 +29,7 @@
     bottom: 100px;
     transition: width 0.3s;
   }
-  
+
   .sidebar a {
     color: #ecf0f1;
     text-decoration: none;
@@ -40,11 +38,11 @@
     font-size: 18px;
     transition: color 0.3s;
   }
-  
+
   .sidebar a:hover {
     color: #3498db;
   }
-  
+
   .router-outlet {
     margin-left: 250px;
     padding: 20px;
@@ -52,36 +50,44 @@
     background-color: #fff;
     overflow-y: auto;
   }
-  
+
   @media (max-width: 768px) {
     .sidebar {
       width: 200px;
       top: 60px;
     }
-  
+
     .router-outlet {
       margin-left: 200px;
     }
   }
-  
+
   @media (max-width: 480px) {
     header {
       padding: 10px;
     }
-  
+
     .sidebar {
       width: 100%;
       top: 50px;
       position: relative;
     }
-  
+
     .sidebar a {
       font-size: 16px;
       text-align: center;
     }
-  
+
     .router-outlet {
       margin-left: 0;
     }
   }
-  
+.notification-box {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgba(132, 98, 186, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
