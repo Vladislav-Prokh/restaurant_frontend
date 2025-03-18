@@ -7,13 +7,13 @@ export const environment = {
   roles: ["ADMIN","WAITER","DEFAULT"],
   report_types: ["pdf","xls"],
   firebase: {
-    apiKey: "replace_it",
-    authDomain: "replace_it",
-    projectId: "replace_it",
-    storageBucket: "replace_it",
-    messagingSenderId: "replace_it",
-    appId: "replace_it",
-    measurementId: "replace_it",
-    vapidKey: "replace_it"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: "",
+    vapidKey: ""
   }
 };
