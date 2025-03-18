@@ -164,3 +164,18 @@
     font-size: 14px;
   }
 }
+
+
+#beverageFact {
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  padding: 15px;
+  margin: 20px 0;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.5;
+  max-width: 800px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

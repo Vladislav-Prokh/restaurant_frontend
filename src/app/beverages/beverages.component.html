@@ -4,17 +4,22 @@
     <a href="/admin/beverage-form" class="add-btn">Add Beverage</a>
   </div>
 
-  <div class="beverages-container">
 
-    <div *ngFor="let beverage of beverages" class="beverage-item">
-      <h3>Name: {{ beverage.beverageName }}</h3>
-      <p>Price: {{ beverage.beveragePrice }}<small>$</small></p>
+    <div id="beverageFact">
+      <p *ngIf="fact">{{fact}}</p>
+    </div>
 
-      <div *ngIf="isAdmin()">
-        <button (click)="removeBeverage(beverage)" class="remove-btn">Remove</button>
+    <div class="beverages-container">
+      <div *ngFor="let beverage of beverages" class="beverage-item">
+        <h3>{{ beverage.beverageName }}</h3>
+        <p>Price: {{ beverage.beveragePrice }}<small>$</small></p>
+
+        <div *ngIf="isAdmin()">
+          <button (click)="removeBeverage(beverage)" class="remove-btn">Remove</button>
+        </div>
       </div>
     </div>
-  </div>
+
   <div class="pagination-controls">
     <button (click)="goToPreviousPage()" [disabled]="currentPage === 0">Previous</button>
     <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>

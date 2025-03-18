@@ -22,6 +22,7 @@ export class MainTemplateComponent {
   isAdmin: boolean = false;
   isWaiter: boolean = false;
 
+
   notificationMessage: any = null;
 
 

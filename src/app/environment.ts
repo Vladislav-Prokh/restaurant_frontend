@@ -7,13 +7,13 @@ export const environment = {
   roles: ["ADMIN","WAITER","DEFAULT"],
   report_types: ["pdf","xls"],
   firebase: {
-    apiKey: "replace it",
-    authDomain: "replace it",
-    projectId: "replace it",
-    storageBucket: "replace it",
-    messagingSenderId: "replace it",
-    appId: "replace it",
-    measurementId: "replace it",
-    vapidKey: "replace it",
+    apiKey: "AIzaSyB3VZP62yoyK2gYLx5eFddQzUQUZCuATCY",
+    authDomain: "restaurant-4e9e0.firebaseapp.com",
+    projectId: "restaurant-4e9e0",
+    storageBucket: "restaurant-4e9e0.firebasestorage.app",
+    messagingSenderId: "551720016150",
+    appId: "1:551720016150:web:719d45cbd4e13497b31837",
+    measurementId: "G-0EC015STQW",
+    vapidKey: "BI3jqUl2dck4RXekI351Baf7tviGQk3nJLVmU-aGFYmPFVrt8NsNXBxPpbwzKjxyWk_I2i1lz5ZK8JULgoeNXYQ"
   }
 };

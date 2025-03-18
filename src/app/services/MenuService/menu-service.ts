@@ -10,7 +10,6 @@ import { environment } from '../../environment';
 export class MenuService {
   private apiUrl = '';
 
-
   constructor(private http: HttpClient) {
     this.apiUrl = environment.apiUrl;
   }
@@ -160,5 +159,9 @@ export class MenuService {
 
   getLunchById(lunchId: number) :Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/menu/lunches/${lunchId}`);
+  }
+
+  getFact(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/ai/fact`, {});
   }
 }
